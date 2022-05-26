@@ -16,6 +16,13 @@ public interface BoardService {
 	//상세보기 메서드	//리턴타입 매서드이름(매개변수);
 	BoardDTO getBoard(Long bno);
 	
+	//게시글 삭제 메서드
+	void removeWithReplies(Long bno);
+	
+	//게시글 수정 메서드
+	void modifyBoard(BoardDTO boardDTO);
+	
+	
 	//DTO를 Entity로 변환해주는 메서드
 	default Board dtoToEntity(BoardDTO dto){
 		Member member = Member.builder().email(dto.getMemberEmail()).build();
