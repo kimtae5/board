@@ -48,7 +48,7 @@ public class ServiceTest {
 		boardService.removeWithReplies(bno);
 	}
 	
-	@Test
+	//@Test
 	public void testModifyBoard() {
 				
 		BoardDTO boardDTO = BoardDTO.builder().bno(100L).title("제목 수정")

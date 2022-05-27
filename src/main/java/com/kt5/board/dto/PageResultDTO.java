@@ -36,7 +36,7 @@ public class PageResultDTO<DTO, EN> {
 	
 	//페이지 번호 목록을 만들어주는 메서드
 	private void makePageList(Pageable pageable){
-		this.page = pageable.getPageNumber();
+		this.page = pageable.getPageNumber() + 1;
 		this.size = pageable.getPageSize();
 		
 		

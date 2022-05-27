@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.kt5.board.model.Board;
 
-public interface BoardRepository extends JpaRepository<Board, Long>{
+public interface BoardRepository extends JpaRepository<Board, Long>, SearchBoardRepository{
 	
 	//Board 테이블에서 데이터를 가져올 때 Member 정보도 같이 가져오는 메서드
 	@Query("select b, w from Board b left join b.member w where b.bno =:bno")

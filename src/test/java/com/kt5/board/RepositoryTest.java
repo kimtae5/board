@@ -114,14 +114,26 @@ public class RepositoryTest {
 		});
 	}
 	
-	@Test
+	//@Test
 	public void testWithBno(){
 		Object result = boardRepository.getBoardByBno(20L);
 		Object[] ar = (Object[])result;
 		System.out.println(Arrays.toString(ar));
 	}
 	
+	//@Test
+	public void testSearch() {
+		boardRepository.search();
+		
+	}
 	
+	@Test
+	public void testSearchPage() {
+		Pageable pageable = PageRequest.of(0,10, Sort.by("bno").descending()
+		.and(Sort.by("title").ascending()));
+		Page<Object[]> result = boardRepository.searchPage("t", "1", pageable);
+		System.out.println(result);
+	}
 	
 	
 
