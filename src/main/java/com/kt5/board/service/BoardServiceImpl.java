@@ -47,9 +47,14 @@ public class BoardServiceImpl implements BoardService {
 		
 		//데이터를 조회 - bno의 내림차순 적용
 		//상황에 따라서는 regDate 나 modDate로 정렬하는 경우도 있음
+		/*
 		Page<Object[]> result = boardRepository.getBoardWithReplyCount(pageRequestDTO
 				.getPageable(Sort.by("bno").descending()));
+		*/
 		
+		Page<Object[]> result = boardRepository.searchPage(pageRequestDTO.getType(),
+				pageRequestDTO.getKeyword(), pageRequestDTO.getPageable(Sort.by("bno").descending()));
+				
 		return new PageResultDTO<>(result, fn);
 		
 	}

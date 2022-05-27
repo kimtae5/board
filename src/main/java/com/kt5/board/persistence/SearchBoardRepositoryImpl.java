@@ -98,7 +98,7 @@ public class SearchBoardRepositoryImpl extends QuerydslRepositorySupport impleme
 		BooleanBuilder booleanBuilder = new BooleanBuilder();
 		//bno가 0보다 큰 데이터를 추출하는 조건
 		BooleanExpression expression = board.bno.gt(0L);
-		booleanBuilder.and(expression);
+		//booleanBuilder.and(expression);
 		
 		//type이 검색항목
 		if(type != null){
