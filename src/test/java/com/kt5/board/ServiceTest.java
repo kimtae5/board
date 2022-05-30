@@ -1,12 +1,16 @@
 package com.kt5.board;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.kt5.board.dto.PageRequestDTO;
 import com.kt5.board.dto.PageResultDTO;
+import com.kt5.board.dto.ReplyDTO;
 import com.kt5.board.service.BoardService;
+import com.kt5.board.service.ReplyService;
 
 @SpringBootTest
 public class ServiceTest {
@@ -56,5 +60,15 @@ public class ServiceTest {
 		boardService.modifyBoard(boardDTO);
 	}
 	
+	@Autowired
+	private ReplyService replyService;
+	
+	//댓글 목록 가져오기 테스트 
+	@Test
+	public void testGetList() {
+		Long bno = 1L;//데이터베이스에 존재하는 번호
+		List<ReplyDTO> replyDTOList = replyService.getList(bno);
+		replyDTOList.forEach(replyDTO -> System.out.println(replyDTO));
+	}
 	
 }

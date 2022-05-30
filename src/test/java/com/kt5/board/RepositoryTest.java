@@ -127,7 +127,7 @@ public class RepositoryTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void testSearchPage() {
 		Pageable pageable = PageRequest.of(0,10, Sort.by("bno").descending()
 		.and(Sort.by("title").ascending()));
@@ -135,6 +135,16 @@ public class RepositoryTest {
 		System.out.println(result);
 	}
 	
+	//@Test
+	//여기에 @Transactional을 붙여도 해결이 되는데 이 경우는 toString을 호출할 때 하나의 트랜잭션으로
+	//간주해서 Board를 가져오기 때문에 해결이 됩니다.
+	public void testListByBoard() {
+		List<Reply> replyList =	replyRepository.getRepliesByBoardOrderByRno(Board.builder()
+				.bno(1L).build());
+		//System.out.println(replyList);는 실제로는 System.out.println(replyList.toString);
+		//List toString은 자신의 멤버 각각의 멤버.toString()을 호출합니다.
+		System.out.println(replyList);
+	}
 	
 
 }
